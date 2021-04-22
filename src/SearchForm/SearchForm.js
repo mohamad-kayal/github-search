@@ -1,7 +1,7 @@
 import React from 'react';
 import './SearchForm.css';
 
-const searchForm = ()=>{
+const searchForm = (props)=>{
 
 }
 

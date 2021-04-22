@@ -1,7 +1,7 @@
 import React from 'react';
 import './SearchResultItem.css';
 
-const searchResultItem = ()=>{
+const searchResultItem = (props)=>{
 
 }
 

@@ -1,21 +1,43 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import React, { useEffect, useState } from 'react';
 import './App.css';
+//import Person from './Person';
+import SearchForm from './SearchForm';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
-  }
+
+
+function App() {
+  const [persons, setPersons] = useState([]);
+  const [search, setSearch] = useState('');
+  const [query, setQuery] = useState('react');
+
+  const GITHUB_API_URL = 'https://api.github.com';
+
+  useEffect(() => {
+    getGithubRepoSearchUrl();
+  }, [])
+
+  function getGithubRepoSearchUrl() {
+    fetch(`${GITHUB_API_URL}/search/repositories?q=repo&page=1&per_page=10`)
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data);
+      //setPersons(data.items)
+      //console.log(data.items);
+    })
+  };
+
+
+  return (
+    <div>
+      <SearchForm 
+        search={search} 
+        setSearch={setSearch} 
+        query={query}
+        setQuery={setQuery}
+      />
+    </div>
+  );
+
 }
 
 export default App;

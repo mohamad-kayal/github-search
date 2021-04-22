@@ -35,7 +35,7 @@ import SearchForm from './SearchForm';
 function App() {
   const [persons, setPersons] = useState([]);
   const [search, setSearch] = useState('');
-  const [query, setQuery] = useState('react');
+  //const [query, setQuery] = useState('react');
 
   const GITHUB_API_URL = 'https://api.github.com';
 
@@ -43,7 +43,7 @@ function App() {
     getGithubRepoSearchUrl();
   }, [])
 
-  function getGithubRepoSearchUrl() {
+  function getGithubRepoSearchUrl(query) {
     fetch(`${GITHUB_API_URL}/search/repositories?q=repo&page=1&per_page=10`)
     .then((response) => response.json())
     .then((data) => {
@@ -59,13 +59,17 @@ function App() {
       <SearchForm 
         search={search} 
         setSearch={setSearch} 
-        query={query}
-        setQuery={setQuery}
       />
     </div>
   );
 
 }
+<<<<<<< HEAD
 >>>>>>> "making the components"
+=======
+//      <Person
+//persons={persons}
+///>
+>>>>>>> making the base copmonents
 
 export default App;

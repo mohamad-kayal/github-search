@@ -6,6 +6,7 @@ import SearchForm from './SearchForm/SearchForm';
 import SearchResultItem from './SearchResultItem/SearchResultItem';
 
 function App() {
+  const [persons,setPersons] = useState([]);
   const [search, setSearch] = useState('');
 
   // we will use the query state below to search for users and repos keep it in mind ;)

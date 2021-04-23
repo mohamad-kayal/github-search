@@ -2,14 +2,15 @@
 import React from "react";
 import "./SearchForm.css";
 
-export default function SearchForm({ search, setSearch }) {
+export default function SearchForm({ search, setSearch, query, setQuery}) {
   const handleChange = (e) => {
     setSearch(e.target.value);
   };
 
   const makeSearch = (event) => {
     event.preventDefault();
-    //setQuery(search);
+    setQuery(search);
+    
   };
 
   return (

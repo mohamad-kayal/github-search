@@ -2,7 +2,7 @@
 import React from "react";
 import "./SearchForm.css";
 
-export default function SearchForm({ search, setSearch, query, setQuery}) {
+export default function SearchForm({ search, setSearch, query, setQuery, setShowResults}) {
   const handleChange = (e) => {
     setSearch(e.target.value);
   };
@@ -10,7 +10,8 @@ export default function SearchForm({ search, setSearch, query, setQuery}) {
   const makeSearch = (event) => {
     event.preventDefault();
     setQuery(search);
-    
+    setShowResults(true);
+
   };
 
   return (

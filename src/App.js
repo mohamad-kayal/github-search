@@ -8,6 +8,7 @@ function App() {
   const [searchResultItems, setsearchResultItems] = useState([]);
   const [search, setSearch] = useState("");
   const [query, setQuery] = useState("");
+  const [showresults,setShowResults] = useState(false);
   const isInitialMount = useRef(true);
   // defining API link
   const GITHUB_API_URL = "https://api.github.com";
@@ -38,7 +39,6 @@ function App() {
         console.log("finally");
       });
   }
-
   return (
     <div>
       <h2>Search For Repositories</h2>
@@ -47,7 +47,10 @@ function App() {
         setSearch={setSearch} //this is a prop
         query={query}
         setQuery={setQuery}
+        showresults={showresults}
+        setShowResults={setShowResults}
       />
+      {showresults? <h3>Showing Results for: {query} </h3> : ''}
       <SearchResultItems
         SearchResultItems={searchResultItems} //this is a prop
       />

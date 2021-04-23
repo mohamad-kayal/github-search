@@ -3,6 +3,7 @@ import React from "react";
 import "./SearchForm.css";
 
 export default function SearchForm({ search, setSearch }) {
+
   const handleChange = (e) => {
     setSearch(e.target.value);
   };

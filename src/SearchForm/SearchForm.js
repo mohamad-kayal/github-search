@@ -3,7 +3,6 @@ import React from "react";
 import "./SearchForm.css";
 
 export default function SearchForm({ search, setSearch }) {
-
   const handleChange = (e) => {
     setSearch(e.target.value);
   };
@@ -15,8 +14,18 @@ export default function SearchForm({ search, setSearch }) {
 
   return (
     <form onSubmit={makeSearch}>
-      <input type="text" value={search} onChange={handleChange} />
-      <button type="submit">Search</button>
+       <label for="input" id="input-label">
+    Enter At least 2 Characters:
+    <input
+      type="text"
+      id="input"
+      required
+      pattern=".{2,}"
+      placeholder="Search for a repository..."
+      value={search} 
+      onChange={handleChange}
+    /></label>
+    <button type="submit" id="btn-submit">Search!</button>
     </form>
   );
 }

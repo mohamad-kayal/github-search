@@ -1,8 +1,8 @@
-import React from 'react';
-import './UserData.css';
+import React from "react";
+import "./UserData.css";
 
-const userData = (props)=>{
-
-}
+const userData = (props) => {
+    
+};
 
 export default userData;

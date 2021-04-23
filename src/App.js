@@ -8,13 +8,18 @@ import "./App.css";
 const GITHUB_API_URL = 'https://api.github.com';
 
 const App = () => {
+  
+  
   const searchRepositoriesHandler = ()=>{
 
   }
+
+  const repositories = null;
+
   return (
     <div>
       <h1>Search For Repositories</h1>
-      <button onClick={incrementCounter}>Search!</button>
+      <button>Search!</button>
     </div>
   );
 };

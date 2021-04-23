@@ -1,36 +1,9 @@
-<<<<<<< HEAD
-import React, { useState, useEffect } from "react";
-import { render } from 'react-dom';
+
+import React, { useEffect, useState } from 'react';
+import './App.css';
 import UserData from './UserData/UserData';
 import SearchForm from './SearchForm/SearchForm';
 import SearchResultItem from './SearchResultItem/SearchResultItem';
-import "./App.css";
-
-const GITHUB_API_URL = 'https://api.github.com';
-
-const App = () => {
-  
-  
-  const searchRepositoriesHandler = ()=>{
-
-  }
-
-  const repositories = null;
-
-  return (
-    <div>
-      <h1>Search For Repositories</h1>
-      <button>Search!</button>
-    </div>
-  );
-};
-=======
-import React, { useEffect, useState } from 'react';
-import './App.css';
-import Person from './Person';
-import SearchForm from './SearchForm';
-
-
 
 function App() {
   const [persons, setPersons] = useState([]);
@@ -62,22 +35,16 @@ function App() {
         search={search} //this is a prop
         setSearch={setSearch} //this is a prop
       />
-      <Person 
+      <SearchResultItem 
         persons={persons} //this is a prop
       />
     </div>
   );
 
 }
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> "making the components"
-=======
+
 //      <Person
 //persons={persons}
 ///>
->>>>>>> making the base copmonents
-=======
->>>>>>> components and organizing
 
 export default App;

@@ -1,5 +1,5 @@
 import React from 'react'
-
+import './SearchResultItems.css'
 export default function SearchResultItems({ SearchResultItems }) {
   return (
     <div>

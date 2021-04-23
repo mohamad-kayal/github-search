@@ -1,6 +1,6 @@
-form {
-    text-align: center;
-  }
+body {
+  background-color: powderblue;
+}
   .container {
     display: flex;
     justify-content: center;
@@ -8,30 +8,7 @@ form {
   #loading {
     display: none;
   }
-  ul {
-    list-style: none;
-    margin: 10px 0 0 0;
-    padding: 0;
-  }
   
-  li {
-    border: 1px solid #000;
-    margin-bottom: 10px;
-    padding: 10px;
-    overflow: auto;
-  }
-  li p {
-    font: 200 12px/1.5 Georgia, Times New Roman, serif;
-  }
-  li img {
-    float: left;
-    width: 20%;
-    margin: 0 15px 0 0;
-  }
-  li:hover {
-    background: #eee;
-    cursor: pointer;
-  }
   #input-label {
     font-size: x-large;
   }
@@ -40,17 +17,7 @@ form {
     margin: 2px;
     padding: 15px 30px;
   }
-  #btn-submit {
-    background-color: #555555;
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin-left: 10px;
-  }
+
   h2 {
     color: #b92e15;
     font-family: 'Raleway', sans-serif;
@@ -61,9 +28,7 @@ form {
     text-align: center;
     text-transform: uppercase;
   }
-  body {
-    background-color: powderblue;
-  }
+  
   
   /* Loading icon */
   #loading {

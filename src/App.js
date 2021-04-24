@@ -27,7 +27,7 @@ function App() {
 
   // Fetch repositories from the internet
   function getGithubRepoSearchUrl() {
-    fetch(`${GITHUB_API_URL}/search/repositories?q=${query}&page=1&per_page=10`)
+    fetch(`${GITHUB_API_URL}/search/repositories?q=${query}&page=1z&per_page=10`)
       .then((response) => response.json())
       .then((data) => {
         setSearchResultItems(data.items);
@@ -51,8 +51,8 @@ function App() {
         setShowResults={setShowResults}
       />
       </div>
-      {showResults? <h3>Showing Results for: {query} </h3> : ''}
       <SearchResultItems
+        setSearchResultItems={setSearchResultItems}
         searchResultItems={searchResultItems}
         showResults={showResults}
         query={query} //this is a prop

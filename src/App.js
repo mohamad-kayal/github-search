@@ -41,6 +41,7 @@ function App() {
   }
   return (
     <div>
+      <div class="form-container">
       <h2>Search For Repositories</h2>
       <SearchForm
         search={search} //this is a prop
@@ -49,6 +50,8 @@ function App() {
         setQuery={setQuery}
         setShowResults={setShowResults}
       />
+      </div>
+      {showResults? <h3>Showing Results for: {query} </h3> : ''}
       <SearchResultItems
         searchResultItems={searchResultItems}
         showResults={showResults}

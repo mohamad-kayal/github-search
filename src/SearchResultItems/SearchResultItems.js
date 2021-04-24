@@ -1,14 +1,22 @@
-import React from 'react';
-import './SearchResultItems.css';
+import React from 'react'
+import './SearchResultItems.css'
+export default function SearchResultItems({ SearchResultItems, showResults, query }) {
 
-
-export default function SearchResultItems({ searchResultItems, showResults, query }) {
+  const style={
+    backgroundColor:'#eee'
+  }
+  const backGroundHelper = ()=>{
+    console.log(style.backgroundColor)
+    style.backgroundColor == '#eee'? style.backgroundColor='#ddd': style.backgroundColor='#eee';
+    return style;
+  }
+  
   return (
     <div>
       {showResults ? <h3>Showing results for: {query}</h3> : ''}
       <ul>
-        {searchResultItems.map(searchResultItem => (
-          <li>
+        {SearchResultItems.map(searchResultItem => (
+          <li style={backGroundHelper()}>
             <h3>{searchResultItem.description}</h3>
             <a href={searchResultItem.html_url}>Repository's Home Page</a>
             <p>{searchResultItem.full_name}</p>

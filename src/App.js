@@ -5,10 +5,10 @@ import SearchResultItems from "./SearchResultItems/SearchResultItems";
 
 function App() {
   // defining states
-  const [searchResultItems, setsearchResultItems] = useState([]);
+  const [searchResultItems, setSearchResultItems] = useState([]);
   const [search, setSearch] = useState("");
   const [query, setQuery] = useState("");
-  const [showresults,setShowResults] = useState(false);
+  const [showResults, setShowResults] = useState(false);
   const isInitialMount = useRef(true);
   // defining API link
   const GITHUB_API_URL = "https://api.github.com";
@@ -30,7 +30,7 @@ function App() {
     fetch(`${GITHUB_API_URL}/search/repositories?q=${query}&page=1&per_page=10`)
       .then((response) => response.json())
       .then((data) => {
-        setsearchResultItems(data.items);
+        setSearchResultItems(data.items);
       })
       .catch((err) => {
         console.log(err);
@@ -47,12 +47,12 @@ function App() {
         setSearch={setSearch} //this is a prop
         query={query}
         setQuery={setQuery}
-        showresults={showresults}
         setShowResults={setShowResults}
       />
-      {showresults? <h3>Showing Results for: {query} </h3> : ''}
       <SearchResultItems
-        SearchResultItems={searchResultItems} //this is a prop
+        searchResultItems={searchResultItems}
+        showResults={showResults}
+        query={query} //this is a prop
       />
     </div>
   );

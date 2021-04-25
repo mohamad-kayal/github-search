@@ -5,10 +5,11 @@ import SearchResultItems from "./SearchResultItems/SearchResultItems";
 
 function App() {
   // defining states
-  const [searchResultItems, setSearchResultItems] = useState([]);
+  const [searchResultItems, setSearchResultItems] = useState(null);
   const [search, setSearch] = useState("");
   const [query, setQuery] = useState("");
   const [showResults, setShowResults] = useState(false);
+  const [error, setError] = useState(null);
   const isInitialMount = useRef(true);
   // defining API link
   const GITHUB_API_URL = "https://api.github.com";
@@ -28,12 +29,20 @@ function App() {
   // Fetch repositories from the internet
   function getGithubRepoSearchUrl() {
     fetch(`${GITHUB_API_URL}/search/repositories?q=${query}&page=1z&per_page=10`)
-      .then((response) => response.json())
+      .then((response) => {
+        if (!response.ok) {
+          throw Error('No Results for your Search, Try Something Different!');
+        }
+        return response.json()
+      })
       .then((data) => {
+        setError(null);
         setSearchResultItems(data.items);
       })
       .catch((err) => {
-        console.log(err);
+        setError(err.message);
+        setShowResults(false);
+        setSearchResultItems(null);
       })
       .finally(() => {
         console.log("finally");
@@ -42,21 +51,26 @@ function App() {
   return (
     <div>
       <div class="form-container">
-      <h2>Search For Repositories</h2>
-      <SearchForm
-        search={search} //this is a prop
-        setSearch={setSearch} //this is a prop
-        query={query}
-        setQuery={setQuery}
-        setShowResults={setShowResults}
-      />
+        <h2>Search For Repositories</h2>
+        <SearchForm
+          search={search} //this is a prop
+          setSearch={setSearch} //this is a prop
+          query={query}
+          setQuery={setQuery}
+          setShowResults={setShowResults}
+        />
       </div>
-      <SearchResultItems
-        setSearchResultItems={setSearchResultItems}
-        searchResultItems={searchResultItems}
-        showResults={showResults}
-        query={query} //this is a prop
-      />
+
+      { error && <div>{ error }</div> }
+
+      { searchResultItems &&  
+        <SearchResultItems
+          searchResultItems={searchResultItems}
+          showResults={showResults}
+          query={query}
+          error={error}
+        />
+      }
     </div>
   );
 }

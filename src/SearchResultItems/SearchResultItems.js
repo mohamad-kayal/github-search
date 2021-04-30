@@ -19,7 +19,7 @@ export default function SearchResultItems({
     <div>
       { error && <div>{ error }</div> }
       <div>
-        {showResults && <h3>Showing results for: {query}</h3>}
+        {showResults && <h3 id="toggleresults">Showing results for: {query}</h3>}
         <ul>
           {searchResultItems.map((searchResultItem) => (
             <div>

@@ -28,7 +28,7 @@ function App() {
 
   // Fetch repositories from the internet
   function getGithubRepoSearchUrl() {
-    fetch(`${GITHUB_API_URL}/search/repositories?q=${query}&page=1z&per_page=10`)
+    fetch(`${GITHUB_API_URL}/search/repositories?q=${query}&page=1&per_page=12`)
       .then((response) => {
         if (!response.ok) {
           throw Error('No Results for your Search, Try Something Different!');
@@ -51,7 +51,7 @@ function App() {
   return (
     <div>
       <div class="form-container">
-        <h2>Search For Repositories</h2>
+
         <SearchForm
           search={search} //this is a prop
           setSearch={setSearch} //this is a prop

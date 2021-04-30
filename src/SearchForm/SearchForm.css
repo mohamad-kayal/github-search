@@ -1,0 +1,62 @@
+.wrapper{
+  display: flex;
+  height:30%;
+  width:100%;
+  margin-left: 5px;
+  /* display: inline; */
+}
+.banner{
+  /* float:left; */
+  width: 50%;
+  height:100%
+}
+
+.form {
+  margin:2% 2% 0 5%; 
+  width: 714px;
+  height: 259px;
+  background: #161B22;  
+  border: 3px solid #21262D;
+  border-radius: 12px;
+  text-align: left;
+  }
+
+#input{
+  height:40px;
+  width: 97%;
+  margin: 10px 5px 10px 5px;
+  color: #fff;
+  background-color: #0D1117;
+  border: 1px solid #21262D;
+  border-radius:8px;
+}
+.options{
+  float: left;
+  margin: 0 0 5px 10px;
+  width:100%;
+}
+
+.radio-btn{
+  margin-left:5px;
+}
+
+.radio-left-group{
+float: left;
+}
+.radio-right-group{
+
+  margin-left: 120px;
+}
+#btn-submit{
+  float: right;
+  margin-right:20px;
+  bottom: 50px;
+  border: 1px solid #2EA043;
+  width:210px;
+  height:50px;
+  color: #fff;
+  font-size: larger;
+  background:rgba(35, 134, 54, 1);
+  border-radius: 12px;
+  
+}

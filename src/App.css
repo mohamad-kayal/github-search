@@ -1,10 +1,20 @@
-body{
-    background-color: darkgray;
+body {
+  min-width: 1000px;
+  min-height: 1024px;
+  height: 100%;
+  width:  100%;
+  background: linear-gradient(180deg, rgba(4, 13, 33, 0.73) 0%, #040D21 100%);
+  margin:0;
+  padding:0;
+  color: #fff;
+  font-family: Aksara Bali Galang;
 }
-h1{
-    font-family: 'Times New Roman', Times, serif;
-    color: blue;
-    display: block;
-    width:50%;
-    align-content: center;
-}
+  .container {
+    display: flex;
+    justify-content: center;
+  }
+  @font-face {
+    font-family:Aksara Bali Galang;
+    src: url('./aksarabaligalang-regular.ttf');
+  }
+

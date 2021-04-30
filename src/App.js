@@ -1,22 +1,77 @@
-import React, { useState, useEffect } from "react";
-import { render } from 'react-dom';
-import UserData from './UserData/UserData';
-import SearchForm from './SearchForm/SearchForm';
-import SearchResultItem from './SearchResultItem/SearchResultItem';
+import React, { useEffect, useState, useRef } from "react";
 import "./App.css";
+import SearchForm from "./SearchForm/SearchForm";
+import SearchResultItems from "./SearchResultItems/SearchResultItems";
 
-const GITHUB_API_URL = 'https://api.github.com';
+function App() {
+  // defining states
+  const [searchResultItems, setSearchResultItems] = useState(null);
+  const [search, setSearch] = useState("");
+  const [query, setQuery] = useState("");
+  const [showResults, setShowResults] = useState(false);
+  const [error, setError] = useState(null);
+  const isInitialMount = useRef(true);
+  // defining API link
+  const GITHUB_API_URL = "https://api.github.com";
 
-const App = () => {
-  const searchRepositoriesHandler = ()=>{
+  // we will use the query state below to search for users and repos keep it in mind ;)
+  // this => const [query, setQuery] = useState();
 
+  useEffect(() => {
+    if(isInitialMount.current){
+      isInitialMount.current=false
+    }
+    else{
+      getGithubRepoSearchUrl();
+    }
+  }, [query]);
+
+  // Fetch repositories from the internet
+  function getGithubRepoSearchUrl() {
+    fetch(`${GITHUB_API_URL}/search/repositories?q=${query}&page=1&per_page=12`)
+      .then((response) => {
+        if (!response.ok) {
+          throw Error('No Results for your Search, Try Something Different!');
+        }
+        return response.json()
+      })
+      .then((data) => {
+        setError(null);
+        setSearchResultItems(data.items);
+      })
+      .catch((err) => {
+        setError(err.message);
+        setShowResults(false);
+        setSearchResultItems(null);
+      })
+      .finally(() => {
+        console.log("finally");
+      });
   }
   return (
     <div>
-      <h1>Search For Repositories</h1>
-      <button onClick={incrementCounter}>Search!</button>
+      <div class="form-container">
+
+        <SearchForm
+          search={search} //this is a prop
+          setSearch={setSearch} //this is a prop
+          query={query}
+          setQuery={setQuery}
+          setShowResults={setShowResults}
+        />
+      </div>
+
+      { error && <div>{ error }</div> }
+
+      { searchResultItems &&  
+        <SearchResultItems
+          searchResultItems={searchResultItems}
+          showResults={showResults}
+          query={query}
+          error={error}
+        />
+      }
     </div>
   );
-};
-
+}
 export default App;

@@ -16,6 +16,7 @@ export default function SearchForm({
     event.preventDefault();
     setQuery(search);
     setShowResults(true);
+    setSearch('');
   };
 
   return (
@@ -23,7 +24,7 @@ export default function SearchForm({
       <div class="banner">
         <h2>Welcome To GitHub Search</h2>
         <p>This is a website that makes different kinds of GitHub search</p>
-        <p>queries ysing GitHub's API</p>
+        <p>queries using GitHub's API</p>
         <p>have Fun :)</p>
       </div>
 

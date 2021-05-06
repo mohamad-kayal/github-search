@@ -36,7 +36,6 @@ function App() {
       })
       .then((data) => {
         setError(null);
-        console.log(data.items);
         setSearchResultItems(data.items);
       })
       .catch((err) => {

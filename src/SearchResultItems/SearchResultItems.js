@@ -3,9 +3,31 @@ import "./SearchResultItems.css";
 export default function SearchResultItems({
   searchResultItems,
   showResults,
-  query,
-  error
+  query
 }) {
+
+  const handleResults = ({ 
+    owner: { html_url: url },
+    owner: { avatar_url },
+    full_name: fullName,
+    html_url: htmlUrl,
+    description,
+   }) => {
+
+    return (
+      <div>
+        <li style={{ backgroundColor: listColorHandler() }}>
+          <h3>{description}</h3>
+          <a href={htmlUrl}>Repository's Home Page</a>
+          <p>{fullName}</p>
+          <img src={avatar_url} />
+          <a href={url}>User profile</a>
+        </li>
+      </div>
+    );
+
+  }
+
   const style = {
     backgroundColor: "#eee",
   };
@@ -20,19 +42,13 @@ export default function SearchResultItems({
       { !searchResultItems.length ? <h2>No Results for your search!</h2> :
         <div>
           {showResults && <h3 id="toggleresults">Showing results for: {query}</h3>}
-          <ul>
-            {searchResultItems.map((searchResultItem) => (
-              <div>
-                <li style={{ backgroundColor: listColorHandler() }}>
-                  <h3>{searchResultItem.description}</h3>
-                  <a href={searchResultItem.html_url}>Repository's Home Page</a>
-                  <p>{searchResultItem.full_name}</p>
-                  <img src={searchResultItem.owner.avatar_url} />
-                  <a href={searchResultItem.owner.html_url}>User profile</a>
-                </li>
-              </div>
-            ))}
-          </ul>
+          <div>
+            <ul>
+              {searchResultItems.map((searchResultItem) => (
+                handleResults(searchResultItem)
+              ))}
+            </ul>
+          </div>
         </div>
       }
     </div>

@@ -18,10 +18,9 @@ function App() {
   // this => const [query, setQuery] = useState();
 
   useEffect(() => {
-    if(isInitialMount.current){
-      isInitialMount.current=false
-    }
-    else{
+    if (isInitialMount.current) {
+      isInitialMount.current = false;
+    } else {
       getGithubRepoSearchUrl();
     }
   }, [query]);
@@ -37,6 +36,7 @@ function App() {
       })
       .then((data) => {
         setError(null);
+        console.log(data.items);
         setSearchResultItems(data.items);
       })
       .catch((err) => {
@@ -65,7 +65,6 @@ function App() {
           searchResultItems={searchResultItems}
           showResults={showResults}
           query={query}
-          error={error}
         />
       }
     </div>

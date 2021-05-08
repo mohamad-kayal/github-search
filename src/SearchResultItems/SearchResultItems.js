@@ -18,7 +18,9 @@ export default function SearchResultItems({
 
   const backgroundPicker = ["#9394c4", "#7879ab", "#6c6d96"];
   const listColorHandler = () => {
-    if(counter==3)counter=0;
+    if(counter === 3) {
+      counter = 0;
+    }
     return backgroundPicker[counter++];
   };
 

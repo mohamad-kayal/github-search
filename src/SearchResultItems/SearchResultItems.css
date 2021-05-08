@@ -11,21 +11,63 @@ ul {
     border-radius: 12px;
     margin: 15px;
     height:525px;
-    width:400;
+    width:400px;
     background-color: lightgray;
   }
   li p {
     font: 200 12px/1.5 Georgia, Times New Roman, serif;
   }
   li img {
-    float: left;
-    width: 20%;
-    margin: 0 15px 0 0;
+    width: 40%;
+    left: -50%;
+    align-items: center;
+    margin: 20px 20px 0 0;
+    border-radius: 50%;
+    box-shadow: 1px 2px 4px 6px #8e8e9c;
+    height: auto;
+	-webkit-transition: .3s ease-in-out;
+	transition: .3s ease-in-out;
+  }
+  li img:hover{
+    width: 45%;
   }
   li:hover {
     background: #eee;
     cursor: pointer;
   }
+
+  .repo-desc{
+    color: black;
+    font-size: 14.5px;
+    height:50px;
+    margin-bottom: 40px;
+    font-family: 'Times New Roman', Times, serif;
+  }
+  
+  .repo-anchor{
+    text-decoration: none;
+ 
+  }
+
+  .repo-anchor:link {
+    color: #ccc;
+  }
+  
+
+  .repo-anchor:visited {
+    color: crimson;
+  }
+  
+
+  .repo-anchor:hover {
+    color: black;
+  }
+  
+ 
+  .repo-anchor:active {
+    color: blue;
+  }
+
   #toggleresults{
     margin-left:5px;
     background:  linear-gradient(90deg, rgba(172, 240, 228, 0.9) 7.21%, #AC88FA 34.27%);

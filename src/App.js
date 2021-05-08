@@ -18,10 +18,9 @@ function App() {
   // this => const [query, setQuery] = useState();
 
   useEffect(() => {
-    if(isInitialMount.current){
-      isInitialMount.current=false
-    }
-    else{
+    if (isInitialMount.current) {
+      isInitialMount.current = false;
+    } else {
       getGithubRepoSearchUrl();
     }
   }, [query]);
@@ -31,7 +30,7 @@ function App() {
     fetch(`${GITHUB_API_URL}/search/repositories?q=${query}&page=1&per_page=12`)
       .then((response) => {
         if (!response.ok) {
-          throw Error('No Results for your Search, Try Something Different!');
+          throw Error('Something went wrong. Try again Later!');
         }
         return response.json()
       })
@@ -44,9 +43,6 @@ function App() {
         setShowResults(false);
         setSearchResultItems(null);
       })
-      .finally(() => {
-        console.log("finally");
-      });
   }
   return (
     <div>
@@ -68,7 +64,6 @@ function App() {
           searchResultItems={searchResultItems}
           showResults={showResults}
           query={query}
-          error={error}
         />
       }
     </div>

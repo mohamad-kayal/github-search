@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./SearchResultItems.css";
 import ReactPaginate from "react-paginate";
-var counter =0;
+
 export default function SearchResultItems({
   searchResultItems,
   showResults,
@@ -15,6 +15,7 @@ export default function SearchResultItems({
 
   const pageCount = Math.ceil(searchResultItems.length / usersPerPage);
 
+  let counter = 0;
 
   const backgroundPicker = ["#9394c4", "#7879ab", "#6c6d96"];
   const listColorHandler = () => {

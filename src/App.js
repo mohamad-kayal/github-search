@@ -3,6 +3,7 @@ import "./App.css";
 import SearchForm from "./SearchForm/SearchForm";
 import SearchResultItems from "./SearchResultItems/SearchResultItems";
 
+
 function App() {
   // defining states
   const [searchResultItems, setSearchResultItems] = useState(null);
@@ -10,6 +11,8 @@ function App() {
   const [query, setQuery] = useState("");
   const [showResults, setShowResults] = useState(false);
   const [error, setError] = useState(null);
+  
+
   const isInitialMount = useRef(true);
   // defining API link
   const GITHUB_API_URL = "https://api.github.com";
@@ -27,7 +30,7 @@ function App() {
 
   // Fetch repositories from the internet
   function getGithubRepoSearchUrl() {
-    fetch(`${GITHUB_API_URL}/search/repositories?q=${query}&page=1&per_page=12`)
+    fetch(`${GITHUB_API_URL}/search/repositories?q=${query}`)
       .then((response) => {
         if (!response.ok) {
           throw Error('Something went wrong. Try again Later!');

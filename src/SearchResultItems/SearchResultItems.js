@@ -1,11 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import "./SearchResultItems.css";
+import ReactPaginate from "react-paginate";
 var counter =0;
 export default function SearchResultItems({
   searchResultItems,
   showResults,
-  query,
+  query
 }) {
+
+  const [pageNumber, setPageNumber] = useState(0);
+  const usersPerPage = 12;
+
+  const pagesVisited = pageNumber * usersPerPage;
+
+  const pageCount = Math.ceil(searchResultItems.length / usersPerPage);
+
+
   const backgroundPicker = ["#9394c4", "#7879ab", "#6c6d96"];
   const listColorHandler = () => {
     if(counter==3)counter=0;
@@ -40,6 +50,10 @@ export default function SearchResultItems({
     );
   };
 
+  const changePage = ({ selected }) => {
+    setPageNumber(selected);
+  }
+
   return (
     <div>
       {!searchResultItems.length ? (
@@ -51,11 +65,24 @@ export default function SearchResultItems({
           )}
           <div>
             <ul>
-              {searchResultItems.map(searchResultItem =>
-                handleResults(searchResultItem)
-              )}
+              {searchResultItems
+                .slice(pagesVisited, pagesVisited + usersPerPage)
+                .map(searchResultItem =>
+                  handleResults(searchResultItem)
+                )}
             </ul>
           </div>
+          <ReactPaginate 
+            previousLabel={"previous"}
+            nextLabel={"next"}
+            pageCount={pageCount}
+            onPageChange={changePage}
+            containerClassName={"pagination"}
+            previousLinkClassName={"prev-link"}
+            nextLinkClassName={"next-link"}
+            disabledClassName={"disabled-link"}
+            activeClassName={"active-link"}
+          />
         </div>
       )}
     </div>

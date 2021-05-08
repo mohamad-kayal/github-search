@@ -74,3 +74,29 @@ ul {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
+
+  .pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 400px;
+    height: 200px;
+  }
+
+  .pagination li {
+    background-color: rgb(108, 109, 150);
+    height: 35px;
+    padding: 10px;
+  }
+
+  .pagination li:hover {
+    opacity:  0.7;
+  }
+
+  .pagination .active-link {
+    background-color: #ccc;
+  }
+
+  .pagination .disabled-link {
+    cursor: not-allowed;
+  }

@@ -1,16 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
 import "./SearchResultItems.css";
-var counter =0;
+import ReactPaginate from "react-paginate";
+
 export default function SearchResultItems({
   searchResultItems,
   showResults,
-  query,
+  query
 }) {
-  const backgroundPicker = ["#9394c4", "#7879ab", "#6c6d96"];
+
+  const [pageNumber, setPageNumber] = useState(0);
+  const itemsPerPage = 12;
+
+  const pagesVisited = pageNumber * itemsPerPage;
+
+  const pageCount = Math.ceil(searchResultItems.length / itemsPerPage);
+  var counter = 0;
+  const backgroundPicker = ["#849ab8", "#687c96", "#4c5c70"];
   const listColorHandler = () => {
-    if(counter==3)counter=0;
+    if(counter === 3) {
+      counter = 0;
+    }
     return backgroundPicker[counter++];
   };
+  const changePage = ({ selected }) => {
+    setPageNumber(selected);
+  }
 
   const handleResults = ({
     owner: { html_url: url },
@@ -25,7 +39,6 @@ export default function SearchResultItems({
           <img src={avatar_url} />
           <h3 className="repo-desc">{description}</h3>
           <h4>
-            {" "}
             <a className="repo-anchor" target="_blank" href={htmlUrl}>
               {fullName}
             </a>
@@ -40,6 +53,8 @@ export default function SearchResultItems({
     );
   };
 
+  
+
   return (
     <div>
       {!searchResultItems.length ? (
@@ -51,11 +66,24 @@ export default function SearchResultItems({
           )}
           <div>
             <ul>
-              {searchResultItems.map(searchResultItem =>
-                handleResults(searchResultItem)
-              )}
+              {searchResultItems
+                .slice(pagesVisited, pagesVisited + itemsPerPage)
+                .map(searchResultItem =>
+                  handleResults(searchResultItem)
+                )}
             </ul>
           </div>
+          <ReactPaginate 
+            previousLabel={"previous"}
+            nextLabel={"next"}
+            pageCount={pageCount}
+            onPageChange={changePage}
+            containerClassName={"pagination"}
+            previousLinkClassName={"prev-link"}
+            nextLinkClassName={"next-link"}
+            disabledClassName={"disabled-link"}
+            activeClassName={"active-link"}
+          />
         </div>
       )}
     </div>

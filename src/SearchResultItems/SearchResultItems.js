@@ -9,21 +9,22 @@ export default function SearchResultItems({
 }) {
 
   const [pageNumber, setPageNumber] = useState(0);
-  const usersPerPage = 12;
+  const itemsPerPage = 12;
 
-  const pagesVisited = pageNumber * usersPerPage;
+  const pagesVisited = pageNumber * itemsPerPage;
 
-  const pageCount = Math.ceil(searchResultItems.length / usersPerPage);
-
-  let counter = 0;
-
-  const backgroundPicker = ["#9394c4", "#7879ab", "#6c6d96"];
+  const pageCount = Math.ceil(searchResultItems.length / itemsPerPage);
+  var counter = 0;
+  const backgroundPicker = ["#849ab8", "#687c96", "#4c5c70"];
   const listColorHandler = () => {
     if(counter === 3) {
       counter = 0;
     }
     return backgroundPicker[counter++];
   };
+  const changePage = ({ selected }) => {
+    setPageNumber(selected);
+  }
 
   const handleResults = ({
     owner: { html_url: url },
@@ -38,7 +39,6 @@ export default function SearchResultItems({
           <img src={avatar_url} />
           <h3 className="repo-desc">{description}</h3>
           <h4>
-            {" "}
             <a className="repo-anchor" target="_blank" href={htmlUrl}>
               {fullName}
             </a>
@@ -53,9 +53,7 @@ export default function SearchResultItems({
     );
   };
 
-  const changePage = ({ selected }) => {
-    setPageNumber(selected);
-  }
+  
 
   return (
     <div>
@@ -69,7 +67,7 @@ export default function SearchResultItems({
           <div>
             <ul>
               {searchResultItems
-                .slice(pagesVisited, pagesVisited + usersPerPage)
+                .slice(pagesVisited, pagesVisited + itemsPerPage)
                 .map(searchResultItem =>
                   handleResults(searchResultItem)
                 )}
